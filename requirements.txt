@@ -1,0 +1,4 @@
+yaml
+applescript
+telethon
+# or tulir-telethon if 406 update app error accure
