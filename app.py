@@ -76,7 +76,7 @@ for e in entities:
         break
 
 
-async def main():
+async def alarm_on_message():
     if entity is None:
         chat = await client.get_entity(config['chat']['name'])
     else:
@@ -87,8 +87,16 @@ async def main():
         if await check_for_new_messages(chat):
             alarm_until_dead()
 
-        time.sleep(20.)
+        time.sleep(20)
+
+def main():
+    while True:
+        try:
+            with client:
+                client.loop.run_until_complete(alarm_on_message())
+        except Exception as e:
+            print(e)
+            time.sleep(60)
 
 if __name__ == '__main__':
-    with client:
-        client.loop.run_until_complete(main())
+    main()
