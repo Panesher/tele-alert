@@ -129,6 +129,5 @@ dmypy.json
 .pyre/
 
 _*
-config.yaml
 *.session*
 .DS_Store
